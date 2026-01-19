@@ -1,3 +1,4 @@
+import 'package:bookhub/utility/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -15,32 +16,13 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFF5F7FA),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF1A1D1E)),
-          onPressed: () => context.pop(),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 24.w),
-            child: Icon(
-              Icons.school,
-              color: const Color(0xFF2B7AF5),
-              size: 28.sp,
-            ),
-          ),
-        ],
-      ),
+      backgroundColor: AppColors.backgroundthemcolor,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             children: [
               SizedBox(height: 10.h),
-              // Hero Image
               Container(
                 width: double.infinity,
                 height: 200.h,
@@ -99,7 +81,9 @@ class _SigninPageState extends State<SigninPage> {
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           decoration: BoxDecoration(
-                            color: _isPhoneLogin ? Colors.white : Colors.transparent,
+                            color: _isPhoneLogin
+                                ? Colors.white
+                                : Colors.transparent,
                             borderRadius: BorderRadius.circular(12.r),
                             boxShadow: _isPhoneLogin
                                 ? [
@@ -131,7 +115,9 @@ class _SigninPageState extends State<SigninPage> {
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           decoration: BoxDecoration(
-                            color: !_isPhoneLogin ? Colors.white : Colors.transparent,
+                            color: !_isPhoneLogin
+                                ? Colors.white
+                                : Colors.transparent,
                             borderRadius: BorderRadius.circular(12.r),
                             boxShadow: !_isPhoneLogin
                                 ? [
@@ -162,13 +148,23 @@ class _SigninPageState extends State<SigninPage> {
               ),
               SizedBox(height: 24.h),
               TextFormField(
-                keyboardType: _isPhoneLogin ? TextInputType.phone : TextInputType.emailAddress,
+                keyboardType: _isPhoneLogin
+                    ? TextInputType.phone
+                    : TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  hintText: _isPhoneLogin ? "(555) 000-0000" : "name@university.edu",
-                  hintStyle: TextStyle(color: const Color(0xFF9CA3AF), fontSize: 14.sp),
+                  hintText: _isPhoneLogin
+                      ? "(555) 000-0000"
+                      : "name@university.edu",
+                  hintStyle: TextStyle(
+                    color: const Color(0xFF9CA3AF),
+                    fontSize: 14.sp,
+                  ),
                   filled: true,
                   fillColor: Colors.white,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 16.h,
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide.none,
@@ -229,9 +225,13 @@ class _SigninPageState extends State<SigninPage> {
               SizedBox(height: 24.h),
               Row(
                 children: [
-                  Expanded(child: _buildSocialButton(Icons.g_mobiledata, Colors.red)), // Google placeholder
+                  Expanded(
+                    child: _buildSocialButton(Icons.g_mobiledata, Colors.red),
+                  ), // Google placeholder
                   SizedBox(width: 16.w),
-                  Expanded(child: _buildSocialButton(Icons.apple, Colors.black)), // Apple placeholder
+                  Expanded(
+                    child: _buildSocialButton(Icons.apple, Colors.black),
+                  ), // Apple placeholder
                 ],
               ),
               SizedBox(height: 40.h),
@@ -239,7 +239,7 @@ class _SigninPageState extends State<SigninPage> {
                 child: Container(
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFECFDF5), 
+                    color: const Color(0xFFECFDF5),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(

@@ -1,3 +1,4 @@
+import 'package:bookhub/auth-screens/views/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -103,7 +104,9 @@ class WelcomePage extends StatelessWidget {
                 width: double.infinity,
                 height: 56.h,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupPage()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF2B7AF5),
                     shape: RoundedRectangleBorder(

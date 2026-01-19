@@ -17,23 +17,6 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFF5F7FA),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF1A1D1E)),
-          onPressed: () => context.pop(),
-        ),
-        title: Text(
-          "Create Account",
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.bold,
-            color: const Color(0xFF1A1D1E),
-          ),
-        ),
-        centerTitle: true,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
@@ -58,13 +41,9 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ),
               SizedBox(height: 24.h),
-              
-              // Full Name
               _buildLabel("Full Name"),
               _buildTextField(hintText: "e.g. Alex Johnson"),
               SizedBox(height: 16.h),
-
-              // Age & Phone Number
               Row(
                 children: [
                   Expanded(
@@ -84,24 +63,20 @@ class _SignupPageState extends State<SignupPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildLabel("Phone Number"),
-                        _buildTextField(hintText: "(555) 000-0000", keyboardType: TextInputType.phone),
+                        _buildTextField(hintText: "+91", keyboardType: TextInputType.phone),
                       ],
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 16.h),
-
-              // Email Address
               _buildLabel("Email Address"),
               _buildTextField(
-                hintText: "name@university.edu",
+                hintText: "Enter your email",
                 keyboardType: TextInputType.emailAddress,
                 suffixIcon: const Icon(Icons.check_circle, color: Color(0xFF10B981)),
               ),
               SizedBox(height: 16.h),
-
-              // Location
               _buildLabel("Location"),
               _buildTextField(
                 hintText: "City, Zip Code",
@@ -119,17 +94,13 @@ class _SignupPageState extends State<SignupPage> {
                 ],
               ),
               SizedBox(height: 16.h),
-
-              // School / University
               _buildLabel("School / University"),
               _buildTextField(
                 hintText: "Search for your campus...",
                 prefixIcon: const Icon(Icons.school, color: Color(0xFF9CA3AF)),
               ),
-              SizedBox(height: 24.h),
-
-              // User Type Selection
-              _buildLabel("I am a..."),
+              SizedBox(height: 19.h),
+              _buildLabel("choose your role in the community"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -139,8 +110,6 @@ class _SignupPageState extends State<SignupPage> {
                 ],
               ),
               SizedBox(height: 32.h),
-
-              // Create Account Button
               SizedBox(
                 width: double.infinity,
                 height: 56.h,
@@ -171,13 +140,11 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ),
               SizedBox(height: 24.h),
-
-              // Login Link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Already have an account? ",
+                    "Already have an account?",
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: const Color(0xFF6B7280),
@@ -210,7 +177,7 @@ class _SignupPageState extends State<SignupPage> {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 14.sp,
+          fontSize: 13.sp,
           fontWeight: FontWeight.bold,
           color: const Color(0xFF1A1D1E),
         ),
@@ -231,7 +198,7 @@ class _SignupPageState extends State<SignupPage> {
         hintStyle: TextStyle(color: const Color(0xFF9CA3AF), fontSize: 14.sp),
         filled: true,
         fillColor: Colors.white,
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
           borderSide: BorderSide.none,

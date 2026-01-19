@@ -1,6 +1,7 @@
 import 'package:bookhub/auth-screens/views/signIn_page.dart';
-import 'package:bookhub/auth-screens/views/signUp_page.dart';
+import 'package:bookhub/auth-screens/views/signup_page.dart';
 import 'package:bookhub/auth-screens/views/welcome_page.dart';
+import 'package:bookhub/features-screens/home_screen_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bookhub/auth-screens/views/splash_screen.dart';
 
@@ -10,6 +11,7 @@ class AppRoutes {
   static const String signInPage = "/signIn";
   static const String signUpPage = "/signUp"; 
   static const String welcomePage = "/welcomePage"; 
+  static const String homeScreen = "/home";
   
 
   GoRouter get router => _goRouter;
@@ -31,8 +33,10 @@ class AppRoutes {
         path: signUpPage,
         builder: (context, state) => const SignupPage(),
       ),
-      
-
+      GoRoute(
+        path: homeScreen,
+        builder: (context, state) => const HomeScreen(),
+      ),
     ],
   );
 }
