@@ -1,4 +1,4 @@
-import 'package:bookhub/auth-screens/views/signup_page.dart';
+import 'package:bookhub/auth-screens/views/signup.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

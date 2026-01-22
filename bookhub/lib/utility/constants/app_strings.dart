@@ -5,7 +5,7 @@ class  AppString {
 
   static const String emailaddress = 'Enter your email address';
   static const String password = 'Create password';
-  static const String comfirmpassword = 'Comfirm Password';
+  static const String comfirmpassword = 'Confirm Password';
 
   static const String signin = "Sign In";
   static const String textAlreadyHaveAccount = "Already have an account? ";
@@ -29,8 +29,23 @@ class  AppString {
   static const String profession = 'Profession';
   static const String usedOnlyToFindLocalBuyers = 'Used only to find local buyers near you.';
   static const String searchcam = 'Search for your campus...';
-  static const String choosecommunity = 'choose your role in the community';
+  static const String choosecommunity = 'Choose your role in the community';
   static const String account = 'Already have an account?';
   static const String cityhinttext = 'City, Zip Code';
+
+  // Validation messages
+  static const String nameIsRequired = 'Name is required';
+  static const String ageIsRequired = 'Age is required';
+  static const String enterValidNumber = 'Enter a valid number';
+  static const String phoneIsRequired = 'Phone number is required';
+  static const String enterValidPhone = 'Enter a valid phone number';
+  static const String emailIsRequired = 'Email is required';
+  static const String enterValidEmail = 'Enter a valid email';
+  static const String locationIsRequired = 'Location is required';
+
+  // Button labels
+  static const String getLoginCode = 'Get Login Code';
+  static const String orContinueWith = 'Or continue with';
+  static const String byLoggingInAgreement = 'By logging in, you agree to our Safety Guidelines, Terms of Service, and Privacy Policy.';
 
 }

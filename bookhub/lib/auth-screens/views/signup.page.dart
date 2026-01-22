@@ -1,4 +1,5 @@
 import 'package:bookhub/custum_widgets/text_widget.dart';
+import 'package:bookhub/custum_widgets/texfieldform_widget.dart';
 import 'package:bookhub/utility/constants/app_colors.dart';
 import 'package:bookhub/utility/constants/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
+      backgroundColor: AppColors.backgroundthemcolor,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
@@ -47,18 +48,18 @@ class _SignupPageState extends State<SignupPage> {
                   text: AppString.signupTitle,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w800,
-                  color: const Color(0xFF1A1D1E),
+                  color: AppColors.blacktextColor,
                 ),
                 SizedBox(height: 8.h),
                 TextWidget(
                   text: AppString.title,
                   fontSize: 14.sp,
-                  color: const Color(0xFF6B7280),
+                  color: AppColors.greyTextColor,
                   height: 1.5,
                 ),
                 SizedBox(height: 20.h),
                 _buildLabel(AppString.fullname),
-                _buildTextField(
+                CustomTextField(
                   controller: _authController.firstNameController,
                   hintText: AppString.namehinttext,
                   validator: _authController.validateName,
@@ -72,7 +73,7 @@ class _SignupPageState extends State<SignupPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _buildLabel(AppString.age),
-                          _buildTextField(
+                          CustomTextField(
                             controller: _authController.userAgeController,
                             keyboardType: TextInputType.number,
                             validator: _authController.validateUserAge,
@@ -87,7 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _buildLabel(AppString.phoneNumber),
-                          _buildTextField(
+                          CustomTextField(
                             controller: _authController.phoneController,
                             keyboardType: TextInputType.phone,
                             validator: _authController.validatePhone,
@@ -99,24 +100,24 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 SizedBox(height: 16.h),
                 _buildLabel(AppString.email),
-                _buildTextField(
+                CustomTextField(
                   controller: _authController.emailController,
                   hintText: AppString.emailaddress,
                   keyboardType: TextInputType.emailAddress,
                   suffixIcon: const Icon(
                     Icons.check_circle,
-                    color: Color(0xFF10B981),
+                    color: AppColors.successColor,
                   ),
                   validator: _authController.validateEmail,
                 ),
                 SizedBox(height: 16.h),
                 _buildLabel(AppString.location),
-                _buildTextField(
+                CustomTextField(
                   controller: _authController.locationController,
                   hintText: AppString.cityhinttext,
                   suffixIcon: const Icon(
                     Icons.my_location,
-                    color: Color(0xFF2B7AF5),
+                    color: AppColors.primaryColor,
                   ),
                   validator: _authController.validateLocation,
                 ),
@@ -126,24 +127,24 @@ class _SignupPageState extends State<SignupPage> {
                     Icon(
                       Icons.lock,
                       size: 12.sp,
-                      color: const Color(0xFF6B7280),
+                      color: AppColors.greyTextColor,
                     ),
                     SizedBox(width: 4.w),
                     TextWidget(
                       text: AppString.usedOnlyToFindLocalBuyers,
                       fontSize: 12.sp,
-                      color: const Color(0xFF6B7280),
+                      color: AppColors.greyTextColor,
                     ),
                   ],
                 ),
                 SizedBox(height: 16.h),
                 _buildLabel(AppString.schoolUniversity),
-                _buildTextField(
+                CustomTextField(
                   controller: _authController.schoolUniController,
                   hintText: AppString.searchcam,
                   prefixIcon: const Icon(
                     Icons.school,
-                    color: Color(0xFF9CA3AF),
+                    color: AppColors.lightGreyColor,
                   ),
                 ),
                 SizedBox(height: 19.h),
@@ -163,27 +164,27 @@ class _SignupPageState extends State<SignupPage> {
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _handleSignUp,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF2B7AF5),
+                      backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.r),
                       ),
                       elevation: 0,
                     ),
                     child: _isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
+                        ? const CircularProgressIndicator(color: AppColors.whiteColor)
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TextWidget(
-                                text: AppString.signupTitle,
+                                text: AppString.signup,
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: AppColors.whiteColor,
                               ),
                               SizedBox(width: 8.w),
                               const Icon(
                                 Icons.arrow_forward,
-                                color: Colors.white,
+                                color: AppColors.whiteColor,
                               ),
                             ],
                           ),
@@ -193,14 +194,14 @@ class _SignupPageState extends State<SignupPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextWidget(text: AppString.account, fontSize: 14.sp, color: const Color(0xFF6B7280)),
+                    TextWidget(text: AppString.account, fontSize: 14.sp, color: AppColors.greyTextColor),
                     GestureDetector(
                       onTap: () => context.push(AppRoutes.signInPage),
                       child:
                       TextWidget(text: AppString.signin,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFF2B7AF5),
+                        color: AppColors.primaryColor,
                       ),
                     ),
                   ],
@@ -277,11 +278,11 @@ class _SignupPageState extends State<SignupPage> {
             width: 100.w,
             height: 100.w,
             decoration: BoxDecoration(
-              color: isSelected ? const Color(0xFFEFF6FF) : Colors.white,
+              color: isSelected ? AppColors.containerBackgroundColor : AppColors.whiteColor,
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
                 color: isSelected
-                    ? const Color(0xFF2B7AF5)
+                    ? AppColors.primaryColor
                     : Colors.transparent,
                 width: 2,
               ),
@@ -301,8 +302,8 @@ class _SignupPageState extends State<SignupPage> {
                 Icon(
                   icon,
                   color: isSelected
-                      ? const Color(0xFF2B7AF5)
-                      : const Color(0xFF6B7280),
+                      ? AppColors.primaryColor
+                      : AppColors.greyTextColor,
                   size: 28.sp,
                 ),
                 SizedBox(height: 8.h),
@@ -312,8 +313,8 @@ class _SignupPageState extends State<SignupPage> {
                     fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
                     color: isSelected
-                        ? const Color(0xFF2B7AF5)
-                        : const Color(0xFF6B7280),
+                        ? AppColors.primaryColor
+                        : AppColors.greyTextColor,
                   ),
                 ),
               ],

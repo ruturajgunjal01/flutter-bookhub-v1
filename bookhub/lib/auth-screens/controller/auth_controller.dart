@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:bookhub/utility/constant_data.dart';
 import 'package:bookhub/utility/app_routes.dart';
+import 'package:bookhub/utility/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
@@ -36,42 +37,42 @@ class AuthController {
 
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Name is required';
+      return AppString.nameIsRequired;
     }
     return null;
   }
 
   String? validateUserAge(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Age is required';
+      return AppString.ageIsRequired;
     }
     if (int.tryParse(value) == null) {
-      return 'Enter a valid number';
+      return AppString.enterValidNumber;
     }
     return null;
   }
 
   String? validatePhone(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Phone number is required';
+      return AppString.phoneIsRequired;
     }
 
     if (value.length < 10) {
-      return 'Enter a valid phone number';
+      return AppString.enterValidPhone;
     }
     return null;
   }
 
   String? validateEmail(String? value) {
-    if (value == null || value.isEmpty) return 'Email is required';
+    if (value == null || value.isEmpty) return AppString.emailIsRequired;
     final regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!regex.hasMatch(value)) return 'Enter a valid email';
+    if (!regex.hasMatch(value)) return AppString.enterValidEmail;
     return null;
   }
 
   String? validateLocation(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Location is required';
+      return AppString.locationIsRequired;
     }
     return null;
   }

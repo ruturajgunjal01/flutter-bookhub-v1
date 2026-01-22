@@ -1,9 +1,9 @@
-import 'package:bookhub/auth-screens/views/signIn_page.dart';
-import 'package:bookhub/auth-screens/views/signup_page.dart';
-import 'package:bookhub/auth-screens/views/welcome_page.dart';
+import 'package:bookhub/auth-screens/views/signin.page.dart';
+import 'package:bookhub/auth-screens/views/signup.page.dart';
+import 'package:bookhub/auth-screens/views/welcome.page.dart';
 import 'package:bookhub/features-screens/home_screen_page.dart';
 import 'package:go_router/go_router.dart';
-import 'package:bookhub/auth-screens/views/splash_screen.dart';
+import 'package:bookhub/auth-screens/views/splash.screen.dart';
 
 class AppRoutes {
 
