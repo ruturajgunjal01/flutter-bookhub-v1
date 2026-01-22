@@ -1,7 +1,7 @@
 import 'package:bookhub/utility/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
+import 'package:bookhub/auth-screens/controller/auth_controller.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
@@ -11,7 +11,20 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  final AuthController _authController = AuthController();
   bool _isPhoneLogin = true;
+  bool _isLoading = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void _handleSignIn() async {
+    setState(() => _isLoading = true);
+    await _authController.signIn(context, isPhone: _isPhoneLogin);
+    if (mounted) setState(() => _isLoading = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +161,12 @@ class _SigninPageState extends State<SigninPage> {
               ),
               SizedBox(height: 24.h),
               TextFormField(
+                // Note: AuthController primarily set up for email/password in user snippet.
+                // We bind the same controller or handle separate ones.
+                // For demonstration, binding emailController if !isPhoneLogin
+                controller: _isPhoneLogin
+                    ? _authController.phoneController
+                    : _authController.emailController,
                 keyboardType: _isPhoneLogin
                     ? TextInputType.phone
                     : TextInputType.emailAddress,
@@ -180,7 +199,7 @@ class _SigninPageState extends State<SigninPage> {
                 width: double.infinity,
                 height: 56.h,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _isLoading ? null : _handleSignIn,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF2B7AF5),
                     shape: RoundedRectangleBorder(
@@ -188,21 +207,24 @@ class _SigninPageState extends State<SigninPage> {
                     ),
                     elevation: 0,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Get Login Code",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  child: _isLoading
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Get Login Code",
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(width: 8.w),
+                            const Icon(Icons.arrow_forward,
+                                color: Colors.white),
+                          ],
                         ),
-                      ),
-                      SizedBox(width: 8.w),
-                      const Icon(Icons.arrow_forward, color: Colors.white),
-                    ],
-                  ),
                 ),
               ),
               SizedBox(height: 32.h),

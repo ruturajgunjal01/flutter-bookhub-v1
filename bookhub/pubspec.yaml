@@ -37,6 +37,9 @@ dependencies:
   get: ^4.7.3
   go_router: ^17.0.1
   flutter_screenutil: ^5.9.3
+  http: ^1.6.0
+  shared_preferences: ^2.5.4
+  google_fonts: ^7.1.0
 
 dev_dependencies:
   flutter_test:
